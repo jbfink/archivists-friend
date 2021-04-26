@@ -12,6 +12,8 @@ TODOS:
 2) Set up screen frame
 3) Set up periodic SGP30 sampling of VOC
 4) Display VOC on screen
+4a) have something like a graph of VOC samples over time on one side and
+    a numeric reading of last VOC on the other.
 5) Set up network
 6) Set up MQTT
   
