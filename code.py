@@ -32,6 +32,8 @@ except:
     print("Can't connect to access point!")
 
 
+pool = socketpool.SocketPool(wifi.radio)
+
 print("Hello World!")
 requests = adafruit_requests.Session(pool, ssl.create_default_context())
 print("Fetching time from", TIME_URL)
