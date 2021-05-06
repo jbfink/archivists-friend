@@ -16,6 +16,14 @@ location = secrets.get("timezone", None)
 TIME_URL = "https://io.adafruit.com/api/v2/%s/integrations/time/strftime?x-aio-key=%s" % (aio_username, aio_key)
 TIME_URL += "&fmt=%25Y-%25m-%25d+%25H%3A%25M%3A%25S.%25L+%25j+%25u+%25z+%25Z"
 
+# setup text display
+magtag.add_text(
+    text_font=terminalio.FONT,
+    text_position=(140, 55),
+    text_scale=5,
+    text_anchor_point=(0.5, 0.5),
+)
+
 # setup sgp30 sensor
 i2c = busio.I2C(board.SCL, board.SDA, frequency=100000)
 sgp30 = adafruit_sgp30.Adafruit_SGP30(i2c)
@@ -30,8 +38,6 @@ try:
     magtag.network.connect()
 except:
     print("Can't connect to access point!")
-
-
 pool = socketpool.SocketPool(wifi.radio)
 
 print("Hello World!")
@@ -40,4 +46,8 @@ print("Fetching time from", TIME_URL)
 response = requests.get(TIME_URL)
 print("-" * 40)
 print(response.text)
+print(response)
 print("-" * 40)
+
+magtag.set_text("Hello!")
+)
