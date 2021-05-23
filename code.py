@@ -16,6 +16,8 @@ location = secrets.get("timezone", None)
 TIME_URL = "https://io.adafruit.com/api/v2/%s/integrations/time/strftime?x-aio-key=%s" % (aio_username, aio_key)
 TIME_URL += "&fmt=%25Y-%25m-%25d+%25H%3A%25M%3A%25S.%25L+%25j+%25u+%25z+%25Z"
 
+# setup MagTag object
+magtag = MagTag()
 # setup text display
 magtag.add_text(
     text_font=terminalio.FONT,
@@ -30,8 +32,6 @@ sgp30 = adafruit_sgp30.Adafruit_SGP30(i2c)
 sgp30.iaq_init()
 sgp30.set_iaq_baseline(secrets['eCO2'], secrets['TVOC'])
 
-# setup MagTag object:
-magtag = MagTag()
 # since network connections take time, this is commented out until I actually
 # need the network.
 try:
@@ -50,4 +50,3 @@ print(response)
 print("-" * 40)
 
 magtag.set_text("Hello!")
-)
