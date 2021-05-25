@@ -21,7 +21,7 @@ TIME_URL = "https://io.adafruit.com/api/v2/%s/integrations/time/strftime?x-aio-k
 # or just split it on spaces. Many ways to gut this fish.
 #  e.g. parse the list yielded by reponse.text.split(" ") --
 # reponse.text.split(" ")[0] is date, reponse.text.split(" ")[1] is time. 
-TIME_URL += "&fmt=%25Y-%25m-%25d+%25H%3A%25M%3A%25S.%25L+%25j+%25u+%25z+%25Z"
+TIME_URL += "&fmt=%25Y-%25m-%25d+%25H%3A%25M+%25j+%25u+%25z+%25Z"
 
 # setup MagTag object
 magtag = MagTag()
@@ -51,11 +51,12 @@ print("Hello World!")
 requests = adafruit_requests.Session(pool, ssl.create_default_context())
 print("Fetching time from", TIME_URL)
 response = requests.get(TIME_URL)
-time_array = response.text.split(" ")
+time_list = response.text.split(" ")
 print("-" * 40)
 print(response.text)
 print(response)
 print("-" * 40)
 
 #magtag.set_text("Hello!")
-magtag.set_text(time_array[0])
+#magtag.set_text(time_list[0])
+magtag.set_text(time_list[1])
