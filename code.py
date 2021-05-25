@@ -19,6 +19,8 @@ TIME_URL = "https://io.adafruit.com/api/v2/%s/integrations/time/strftime?x-aio-k
 # one for the date, if we are looking to isolate time and/or date in a single
 # text variable. Either that, or figure out how to regex (ha) the returned text
 # or just split it on spaces. Many ways to gut this fish.
+#  e.g. parse the list yielded by reponse.text.split(" ") --
+# reponse.text.split(" ")[0] is date, reponse.text.split(" ")[1] is time. 
 TIME_URL += "&fmt=%25Y-%25m-%25d+%25H%3A%25M%3A%25S.%25L+%25j+%25u+%25z+%25Z"
 
 # setup MagTag object
