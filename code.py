@@ -32,8 +32,8 @@ sgp30 = adafruit_sgp30.Adafruit_SGP30(i2c)
 sgp30.iaq_init()
 sgp30.set_iaq_baseline(secrets['eCO2'], secrets['TVOC'])
 
-# since network connections take time, this is commented out until I actually
-# need the network.
+# comment this out if you don't need the network -- establishing the connection
+# is slightly time-intensive.
 try:
     magtag.network.connect()
 except:
