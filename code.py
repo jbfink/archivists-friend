@@ -14,14 +14,10 @@ aio_username = secrets["aio_username"]
 aio_key = secrets["aio_key"]
 location = secrets.get("timezone", None)
 TIME_URL = "https://io.adafruit.com/api/v2/%s/integrations/time/strftime?x-aio-key=%s" % (aio_username, aio_key)
-# I believe the correct thing to do here is figure out how to change this
-# line so that it *just* returns the time, and possibly another (DATE_URL?)
-# one for the date, if we are looking to isolate time and/or date in a single
-# text variable. Either that, or figure out how to regex (ha) the returned text
-# or just split it on spaces. Many ways to gut this fish.
-#  e.g. parse the list yielded by reponse.text.split(" ") --
 # reponse.text.split(" ")[0] is date, reponse.text.split(" ")[1] is time. 
-TIME_URL += "&fmt=%25Y-%25m-%25d+%25H%3A%25M+%25j+%25u+%25z+%25Z"
+#TIME_URL += "&fmt=%25Y-%25m-%25d+%25H%3A%25M+%25j+%25u+%25z+%25Z"
+# below returns time in Unix seconds
+TIME_URL += "&fmt=%25s"
 
 # setup MagTag object
 magtag = MagTag()
