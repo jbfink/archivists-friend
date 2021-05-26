@@ -1,5 +1,5 @@
 # core modules import
-import time, board, busio, wifi, ipaddress, ssl, socketpool, terminalio, displayio
+import time, board, busio, wifi, ipaddress, ssl, socketpool, terminalio, displayio, rtc
 from secrets import secrets
 # adafruit add-on modules
 import adafruit_requests
@@ -10,6 +10,7 @@ import adafruit_display_text
 from adafruit_magtag.magtag import MagTag
 
 # we get the time from adafruit's server, as apparently NTP is too heavy
+r = rtc.RTC()
 aio_username = secrets["aio_username"]
 aio_key = secrets["aio_key"]
 location = secrets.get("timezone", None)
@@ -55,4 +56,5 @@ print("-" * 40)
 
 #magtag.set_text("Hello!")
 #magtag.set_text(time_list[0])
-magtag.set_text(time_list[1])
+#magtag.set_text(time_list[1])
+
