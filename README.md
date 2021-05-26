@@ -6,6 +6,26 @@ This is an [Adafruit](https://adafruit.com) [MagTag](https://www.adafruit.com/ma
 Given that the Archivists's Friend is intended to be a device that functions off a battery for a long time before needing recharging, it won't be sampling all day, but something like once a day (probably taking multiple samples over a period of minutes so as to not get a false positive or negative from one reading), writing the level to the screen. Since it's eInk, the screen will remain visible even without power.
 
 
+IMMEDIATE NEXT PROJECT:
+
+Set time on device to current time. Time can be set by using Unix 1970, e.g. a ```time.localtime(1622040587)``` will return a time of 202105261449 . 
+
+* How to *set* time? time.localtime just provides an interpretation.
+** RTC can do this (https://circuitpython.readthedocs.io/en/6.2.x/shared-bindings/rtc/index.html). 
+```
+import rtc
+import time
+
+r = rtc.RTC()
+r.datetime = time.localtime(1622040587)
+```
+After this, time.localtime() returns an ongoing time.
+
+* How to use Adafruit's NTP-ish service to *return Unix seconds*, then set? does this go in boot.py?
+
+* How to, once set, return time in a suitable format for magtag.set_text() ?
+ 
+
 TODOS:
 
 1) ~~set up libraries~~
