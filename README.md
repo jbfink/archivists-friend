@@ -21,6 +21,8 @@ r.datetime = time.localtime(1622040587)
 ```
 After this, time.localtime() returns an ongoing time.
 
+* Additional problem: time is unix time, so time.localtime() is GMT. *Maybe* adafruit_datetime library will fix this, but I have not been able to get it to work (yet). check adafruit_datetime.datetime.now(timezone="EDT") (this fails)
+
 * How to use Adafruit's NTP-ish service to *return Unix seconds*, then set? does this go in boot.py?
 ** probably not: code.py does not loop natively but through while True:, so you don't have to worry about constantly hitting adafruit for ntp. 
 
