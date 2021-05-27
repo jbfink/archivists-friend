@@ -9,6 +9,9 @@ import adafruit_bitmap_font
 import adafruit_display_text
 from adafruit_magtag.magtag import MagTag
 
+def returntime():
+    return str(time.localtime()[3]) + ":" + str(time.localtime()[4])
+
 # we get the time from adafruit's server, as apparently NTP is too heavy
 r = rtc.RTC()
 aio_username = secrets["aio_username"]
@@ -51,10 +54,10 @@ response = requests.get(TIME_URL)
 time_list = response.text.split(" ")
 print("-" * 40)
 print(response.text)
-print(response)
+r.datetime = time.localtime(int(response.text))
 print("-" * 40)
 
 #magtag.set_text("Hello!")
 #magtag.set_text(time_list[0])
 #magtag.set_text(time_list[1])
-
+print(returntime())

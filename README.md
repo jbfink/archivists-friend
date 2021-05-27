@@ -22,6 +22,7 @@ r.datetime = time.localtime(1622040587)
 After this, time.localtime() returns an ongoing time.
 
 * How to use Adafruit's NTP-ish service to *return Unix seconds*, then set? does this go in boot.py?
+** probably not: code.py does not loop natively but through while True:, so you don't have to worry about constantly hitting adafruit for ntp. 
 
 * How to, once set, return time in a suitable format for magtag.set_text() ?
  
