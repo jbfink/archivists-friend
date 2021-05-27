@@ -9,8 +9,16 @@ import adafruit_bitmap_font
 import adafruit_display_text
 from adafruit_magtag.magtag import MagTag
 
+# No zfill on circuitpython!!!
+def zeroize(number):
+    if number < 10:
+        return "0" + str(number)
+    else:
+        return str(number)
+
 def returntime():
-    return str(time.localtime()[3]) + ":" + str(time.localtime()[4])
+    return zeroize(time.localtime()[3]) + ":" + zeroize(time.localtime()[4])
+
 
 # we get the time from adafruit's server, as apparently NTP is too heavy
 r = rtc.RTC()
