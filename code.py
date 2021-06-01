@@ -7,6 +7,7 @@ import adafruit_sgp30
 import adafruit_portalbase
 import adafruit_bitmap_font
 import adafruit_display_text
+from adafruit_datetime import datetime, date, timezone
 from adafruit_magtag.magtag import MagTag
 
 # No zfill on circuitpython!!!
@@ -68,4 +69,6 @@ print("-" * 40)
 #magtag.set_text("Hello!")
 #magtag.set_text(time_list[0])
 #magtag.set_text(time_list[1])
-print(returntime())
+#print(returntime())
+#magtag.set_text(returntime())
+print("Current time: ", datetime.now())
