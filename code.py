@@ -26,6 +26,9 @@ r = rtc.RTC()
 aio_username = secrets["aio_username"]
 aio_key = secrets["aio_key"]
 location = secrets.get("timezone", None)
+# EST offset in seconds. This works, but I hate how crude it is. :/
+time_offset = 14400
+
 TIME_URL = "https://io.adafruit.com/api/v2/%s/integrations/time/strftime?x-aio-key=%s" % (aio_username, aio_key)
 # reponse.text.split(" ")[0] is date, reponse.text.split(" ")[1] is time. 
 #TIME_URL += "&fmt=%25Y-%25m-%25d+%25H%3A%25M+%25j+%25u+%25z+%25Z"
@@ -63,7 +66,7 @@ response = requests.get(TIME_URL)
 time_list = response.text.split(" ")
 print("-" * 40)
 print(response.text)
-r.datetime = time.localtime(int(response.text))
+r.datetime = time.localtime(int(response.text) - time_offset)
 print("-" * 40)
 
 #magtag.set_text("Hello!")
