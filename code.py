@@ -74,6 +74,6 @@ print("-" * 40)
 #magtag.set_text(time_list[1])
 #print(returntime())
 while True:
-    time.sleep(10)
+    time.sleep(60)
     magtag.set_text(returntime())
     print("Current time: ", datetime.now())
