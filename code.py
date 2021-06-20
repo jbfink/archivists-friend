@@ -74,8 +74,9 @@ print("-" * 40)
 #magtag.set_text(time_list[1])
 #print(returntime())
 while True:
-    # Instead of this refresh, write an if so that if seconds == 00
-    # then refresh the display.
-    time.sleep(60)
-    magtag.set_text(returntime())
-    print("Current time: ", datetime.now())
+    # only change the display if seconds are 0, then sleep 5s to debounce
+    # (otherwise display refreshes a second time, needlessly.
+    if datetime.now().second == 0:
+        magtag.set_text(returntime())
+        time.sleep(5)
+        
