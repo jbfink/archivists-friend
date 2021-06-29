@@ -77,6 +77,6 @@ while True:
     # only change the display if seconds are 0, then sleep 5s to debounce
     # (otherwise display refreshes a second time, needlessly.
     if datetime.now().second == 0:
-        magtag.set_text(returntime())
+        magtag.set_text(sgp30.TVOC)
         time.sleep(5)
         
